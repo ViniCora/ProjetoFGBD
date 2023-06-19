@@ -155,7 +155,8 @@ public class interfacePrincipal extends javax.swing.JFrame {
 
     private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
         // TODO add your handling code here:
-        System.out.println("Apenas para commit");
+        InterfaceImportaExcel excel = new InterfaceImportaExcel();
+        excel.setVisible(true);
     }//GEN-LAST:event_btnCSVActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
