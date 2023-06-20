@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -19,17 +20,20 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class InterfaceImportaExcel extends javax.swing.JFrame {
 
-    private final JFileChooser openFileChooser;
-    private BufferedReader br; 
+    private JFileChooser openFileChooser;
+    private BufferedReader br;
+    String linha = "";
+    String csvDivisor = ";";
     /**
      * Creates new form interfaceImportaExcel
      */
     public InterfaceImportaExcel() {
         initComponents();
-        
-        openFileChooser = new JFileChooser();
-        openFileChooser.setCurrentDirectory(new File("D:\\downloads"));
-        openFileChooser.setFileFilter(new FileNameExtensionFilter( "CSV files (*csv)", "csv"));
+        fileName.setVisible(false);
+        jLabel3.setVisible(false);
+        simButton.setVisible(false);
+        naoButton.setVisible(false);
+        inicializaFileOpenner();
     }
 
     /**
@@ -45,6 +49,10 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         labelFile = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        fileName = new javax.swing.JLabel();
+        simButton = new javax.swing.JButton();
+        naoButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,6 +69,22 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Deseja realmente importar o arquivo:");
+
+        simButton.setText("Sim");
+        simButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simButtonActionPerformed(evt);
+            }
+        });
+
+        naoButton.setText("Não");
+        naoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                naoButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,7 +98,21 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(labelFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(simButton)
+                                    .addGap(43, 43, 43)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fileName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(naoButton)
+                                    .addGap(0, 0, Short.MAX_VALUE))))))
                 .addGap(243, 243, 243))
         );
         layout.setVerticalGroup(
@@ -88,7 +126,15 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(401, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(fileName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(simButton)
+                    .addComponent(naoButton))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,6 +147,11 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
             try {
                 br = new BufferedReader(new FileReader(openFileChooser.getSelectedFile()));
                 labelFile.setText("Arquivo carregado com sucesso!");
+                fileName.setVisible(true);
+                fileName.setText(openFileChooser.getSelectedFile().getName());
+                jLabel3.setVisible(true);
+                simButton.setVisible(true);
+                naoButton.setVisible(true);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(InterfaceImportaExcel.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -111,6 +162,57 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void naoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_naoButtonActionPerformed
+        br = null;
+        inicializaFileOpenner();
+        fileName.setVisible(false);
+        jLabel3.setVisible(false);
+        simButton.setVisible(false);
+        naoButton.setVisible(false);
+        labelFile.setText("");
+    }//GEN-LAST:event_naoButtonActionPerformed
+
+    private void simButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simButtonActionPerformed
+        boolean criarTabela = DBUtils.verificaCriaTabela(openFileChooser.getSelectedFile().getName());
+        percorreExcel(criarTabela, openFileChooser.getSelectedFile().getName());
+    }//GEN-LAST:event_simButtonActionPerformed
+
+    private void percorreExcel(boolean criaTabela, String name){
+        boolean primeiraLinha = true;
+        boolean segundaLinha = false;
+        String[] colunasNomes = null;
+        try {
+            while ((linha = br.readLine()) != null) {
+                
+                String[] colunas = linha.split(csvDivisor);
+                
+                for(String coluna : colunas){
+                    if(primeiraLinha == false && segundaLinha == true){
+                        if(criaTabela){
+                            DBUtils.criaNovaTabelaBanco(colunasNomes, name, colunas);
+                        }
+                        segundaLinha = false;
+                    }
+//                    System.out.print(coluna + ",");
+                }
+//                System.out.println("");
+                if(primeiraLinha == true){
+                    colunasNomes = colunas;
+                    primeiraLinha = false;
+                    segundaLinha = true;
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(InterfaceImportaExcel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void inicializaFileOpenner(){
+        openFileChooser = new JFileChooser();
+        openFileChooser.setCurrentDirectory(new File("D:\\downloads"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter( "CSV files (*csv)", "csv"));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -142,18 +244,21 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                excel = new InterfaceImportaExcel();
-                excel.setVisible(true);
+                new InterfaceImportaExcel().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fileName;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel labelFile;
+    private javax.swing.JButton naoButton;
+    private javax.swing.JButton simButton;
     // End of variables declaration//GEN-END:variables
     
-    private static InterfaceImportaExcel excel;
+    
 }
