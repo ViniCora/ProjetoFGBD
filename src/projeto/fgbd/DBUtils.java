@@ -8,6 +8,8 @@ package projeto.fgbd;
  * @author vinicius.brusamolin
  */
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 public class DBUtils {
     public static boolean verificaCriaTabela(String tabelaName) throws ClassNotFoundException, SQLException{
         return !verificaExisteTabela(tabelaName);
@@ -138,23 +140,31 @@ public class DBUtils {
        return isNumeric;
     }
     
-    public static void efetivarBuscaConsulta(StringBuilder query) throws ClassNotFoundException, SQLException{
+    public static StringBuilder efetivarBuscaConsulta(StringBuilder query) throws ClassNotFoundException, SQLException{
+        StringBuilder retorno = new StringBuilder();
+        boolean primeiraIteracao = true;
         try(Connection conn = conexaoBancoDeDados()){
              try (Statement stmt = conn.createStatement()) {
                 ResultSet rs = stmt.executeQuery(query.toString());
                 while(rs.next()){
-
+                    
                     ResultSetMetaData rsmd = rs.getMetaData();
                     int columnSize = rsmd.getColumnCount();
-                    
-                    for(int i = 1; i <= columnSize; i++){
-                         System.out.print(rs.getObject(i) + " / ");
+                    if(primeiraIteracao){
+                        for(int i = 1; i <= columnSize; i++){
+                            retorno.append(String.format("---------%s--------",rsmd.getColumnName(i)));
+                        }
+                        primeiraIteracao = false;
+                        retorno.append("\n\n");
                     }
-                    System.out.println("");
-                    System.out.println("------------------------------------------------------");
-
+                    for(int i = 1; i <= columnSize; i++){
+                        retorno.append(String.format("---------%s--------",rs.getObject(i)));
+                    }
+                    retorno.append("\n\n");
+                    
                 }
             }
         }
+        return retorno;
     }
 }

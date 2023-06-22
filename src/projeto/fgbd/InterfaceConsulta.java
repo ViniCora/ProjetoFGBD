@@ -15,6 +15,7 @@ import javax.swing.JRadioButton;
  */
 public class InterfaceConsulta extends javax.swing.JFrame {
 
+    public static StringBuilder sbRetorno;
     /**
      * Creates new form InterfaceConsulta
      */
@@ -306,12 +307,13 @@ public class InterfaceConsulta extends javax.swing.JFrame {
                     .addComponent(jRadioButton10)
                     .addComponent(jRadioButton9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel13)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(7, 7, 7)
                 .addComponent(jCheckBox2)
                 .addGap(13, 13, 13)
@@ -485,12 +487,15 @@ public class InterfaceConsulta extends javax.swing.JFrame {
         jLabel9.setText("Sem Erros");
         
         try {
-            DBUtils.efetivarBuscaConsulta(sbSQL);
+            sbRetorno = DBUtils.efetivarBuscaConsulta(sbSQL);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InterfaceConsulta.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceConsulta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        InterfaceConsultaResultados consultaResultado = new InterfaceConsultaResultados();
+        consultaResultado.setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
