@@ -55,6 +55,7 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
         simButton = new javax.swing.JButton();
         naoButton = new javax.swing.JButton();
         logConexao = new javax.swing.JLabel();
+        mensagemCommit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,39 +90,38 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
 
         logConexao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        mensagemCommit.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(251, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(simButton)
-                                        .addGap(43, 43, 43)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fileName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(naoButton)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                .addContainerGap(252, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(labelFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel2)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(simButton)
+                                    .addGap(61, 61, 61)
+                                    .addComponent(naoButton)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(mensagemCommit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(logConexao, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(7, 7, 7)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(logConexao, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)))
-                .addGap(243, 243, 243))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fileName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(242, 242, 242))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +142,9 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(simButton)
                     .addComponent(naoButton))
-                .addGap(100, 100, 100)
+                .addGap(31, 31, 31)
+                .addComponent(mensagemCommit)
+                .addGap(53, 53, 53)
                 .addComponent(logConexao)
                 .addContainerGap(199, Short.MAX_VALUE))
         );
@@ -151,6 +153,7 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        mensagemCommit.setVisible(false);
         int returnValue = openFileChooser.showOpenDialog(this);
         
         if(returnValue == JFileChooser.APPROVE_OPTION){
@@ -184,14 +187,18 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
 
     private void simButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simButtonActionPerformed
         try {
+            mensagemCommit.setText("Arquivo sendo carregado para a base...");
             String name = openFileChooser.getSelectedFile().getName().split(".csv")[0].replaceAll("-", "_");
             boolean criarTabela = DBUtils.verificaCriaTabela(name);
             percorreExcel(criarTabela, name);
+            mensagemCommit.setText("Arquivo Carregado!");
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InterfaceImportaExcel.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceImportaExcel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        naoButtonActionPerformed(evt);
     }//GEN-LAST:event_simButtonActionPerformed
 
      private void percorreExcel(boolean criaTabela, String name) throws ClassNotFoundException, SQLException{
@@ -276,6 +283,7 @@ public class InterfaceImportaExcel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel labelFile;
     private javax.swing.JLabel logConexao;
+    private javax.swing.JLabel mensagemCommit;
     private javax.swing.JButton naoButton;
     private javax.swing.JButton simButton;
     // End of variables declaration//GEN-END:variables

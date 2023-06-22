@@ -90,7 +90,7 @@ public class interfacePrincipal extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel7.setText("Importante, se conecte com um ");
+        jLabel7.setText("Importante! Se conecte com um ");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setText("banco já existente:");
@@ -205,12 +205,13 @@ public class interfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCSVActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        if(verificaValoresBanco()){
-            
+//        if(verificaValoresBanco()){
+            InterfaceConsulta consulta = new InterfaceConsulta();
+            consulta.setVisible(true);
             logConexaoInicial.setText("");
-        }else{
-            logConexaoInicial.setText("Você não pode acessar essa tela enquanto não conectar no banco!");
-        }
+//        }else{
+//            logConexaoInicial.setText("Você não pode acessar essa tela enquanto não conectar no banco!");
+//        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnConectarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarBancoActionPerformed

@@ -10,7 +10,7 @@ package projeto.fgbd;
 import java.sql.*;
 public class DBUtils {
     public static boolean verificaCriaTabela(String tabelaName) throws ClassNotFoundException, SQLException{
-        return verificaExisteTabela(tabelaName);
+        return !verificaExisteTabela(tabelaName);
     }
     
     public static boolean verificaExisteTabela(String tabelaName) throws ClassNotFoundException, SQLException{
@@ -136,5 +136,25 @@ public class DBUtils {
        boolean isNumeric = coluna.chars().allMatch( Character::isDigit );
         
        return isNumeric;
+    }
+    
+    public static void efetivarBuscaConsulta(StringBuilder query) throws ClassNotFoundException, SQLException{
+        try(Connection conn = conexaoBancoDeDados()){
+             try (Statement stmt = conn.createStatement()) {
+                ResultSet rs = stmt.executeQuery(query.toString());
+                while(rs.next()){
+
+                    ResultSetMetaData rsmd = rs.getMetaData();
+                    int columnSize = rsmd.getColumnCount();
+                    
+                    for(int i = 1; i <= columnSize; i++){
+                         System.out.print(rs.getObject(i) + " / ");
+                    }
+                    System.out.println("");
+                    System.out.println("------------------------------------------------------");
+
+                }
+            }
+        }
     }
 }

@@ -169,6 +169,7 @@ public class InterfaceConectarBanco extends javax.swing.JFrame {
                 Connection conn = DBUtils.conexaoBancoDeDados();
                 if(conn != null){
                     logConexao.setText("Banco conectado com sucesso!");
+                    conn.close();
                 }
             }
  
