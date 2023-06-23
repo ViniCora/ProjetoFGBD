@@ -13,12 +13,12 @@ import javax.swing.JRadioButton;
  *
  * @author Usuario
  */
-public class InterfaceDelete extends javax.swing.JFrame {
+public class InterfaceUpdate extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceDelete
      */
-    public InterfaceDelete() {
+    public InterfaceUpdate() {
         initComponents();
         jCheckBox1.setSelected(true);
         jRadioButton10.setSelected(true);
@@ -50,11 +50,20 @@ public class InterfaceDelete extends javax.swing.JFrame {
         jTextField11 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField13 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Excluir Dados");
+        jLabel1.setText("Editar Dados");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Tabela:");
@@ -93,19 +102,29 @@ public class InterfaceDelete extends javax.swing.JFrame {
         jLabel13.setText("Valor 2:");
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Deletar");
+        jButton2.setText("Editar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jCheckBox1.setText("Filtrar Delete (se essa opção for desmarcada todos os dados serão excluidos)");
+        jCheckBox1.setText("Filtros para update");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
             }
         });
+
+        jLabel4.setText("Coluna 1:");
+
+        jLabel14.setText("Valor 1:");
+
+        jLabel5.setText("Coluna 2:");
+
+        jLabel15.setText("Valor 2:");
+
+        jLabel7.setText("Colunas para update e seus valores");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,7 +139,7 @@ public class InterfaceDelete extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -130,11 +149,11 @@ public class InterfaceDelete extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))))
                 .addGap(140, 140, 140))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(304, 304, 304))
+                        .addGap(286, 286, 286))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox1)
@@ -160,8 +179,27 @@ public class InterfaceDelete extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(42, 42, 42))))
+                                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel14))
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(160, 160, 160)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +214,23 @@ public class InterfaceDelete extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(jCheckBox1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -194,9 +248,9 @@ public class InterfaceDelete extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
                         .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+                .addContainerGap())
         );
 
         pack();
@@ -217,13 +271,36 @@ public class InterfaceDelete extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         StringBuilder sbSQL = new StringBuilder();
-        sbSQL.append("DELETE ");
+        sbSQL.append("UPDATE ");
         
         if(jTextField6.getText() != null && !jTextField6.getText().trim().isEmpty()){
-            sbSQL.append(String.format(" FROM %s ", jTextField6.getText()));
+            sbSQL.append(String.format(" %s ", jTextField6.getText()));
         }else{
             jLabel9.setText("Escolha uma tabela");
             return;
+        }
+        
+        sbSQL.append(" SET ");
+        
+        if(jTextField3.getText() != null && !jTextField3.getText().trim().isEmpty()){
+            if(jTextField12.getText() != null && !jTextField12.getText().trim().isEmpty()){
+                sbSQL.append(String.format(" %s.%s = '%s' ",jTextField6.getText(), jTextField3.getText(), jTextField12.getText()));
+            }else{
+                jLabel9.setText("Escolha o valor para a primeira coluna (Valor1)");
+                return;
+            }
+        }else{
+            jLabel9.setText("Escolha pelo menos uma coluna para filtrar.");
+            return;
+        }
+        
+        if(jTextField4.getText() != null && !jTextField4.getText().trim().isEmpty()){
+            if(jTextField13.getText() != null && !jTextField13.getText().trim().isEmpty()){
+                sbSQL.append(String.format(" ,%s.%s = '%s' ",jTextField6.getText(), jTextField4.getText(), jTextField13.getText()));
+            }else{
+                jLabel9.setText("Escolha o valor para a segunda coluna (Valor2)");
+                return;
+            }
         }
 
         if(jCheckBox1.isSelected()){
@@ -254,23 +331,30 @@ public class InterfaceDelete extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         try {
             DBUtils.efetivarUpdateDados(sbSQL);
             jLabel9.setText("Sem erros");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(InterfaceDelete.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InterfaceUpdate.class.getName()).log(Level.SEVERE, null, ex);
             jLabel9.setText(ex.getMessage());
         } catch (SQLException ex) {
-            Logger.getLogger(InterfaceDelete.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InterfaceUpdate.class.getName()).log(Level.SEVERE, null, ex);
             jLabel9.setText(ex.getMessage());
         }
+        System.out.println(sbSQL.toString());
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void desmarcaRadio(JRadioButton button){
+
+        button.setSelected(false); 
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -288,28 +372,23 @@ public class InterfaceDelete extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceDelete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceDelete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceDelete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceDelete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceUpdate.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceDelete().setVisible(true);
+                new InterfaceUpdate().setVisible(true);
             }
         });
-    }
-    
-    private void desmarcaRadio(JRadioButton button){
-
-        button.setSelected(false);
-       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -318,9 +397,14 @@ public class InterfaceDelete extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton10;
@@ -328,7 +412,11 @@ public class InterfaceDelete extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
