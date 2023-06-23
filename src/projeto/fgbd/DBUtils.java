@@ -167,4 +167,13 @@ public class DBUtils {
         }
         return retorno;
     }
+    
+      public static void efetivarUpdateDados(StringBuilder query) throws ClassNotFoundException, SQLException{
+        try(Connection conn = conexaoBancoDeDados()){
+             try (Statement stmt = conn.createStatement()) {
+                stmt.executeUpdate(query.toString());
+            }
+        }
+ 
+    }
 }

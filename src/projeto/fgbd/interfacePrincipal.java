@@ -251,13 +251,13 @@ public class interfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCSVActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-//        if(verificaValoresBanco()){
+        if(verificaValoresBanco()){
             InterfaceConsulta consulta = new InterfaceConsulta();
             consulta.setVisible(true);
             logConexaoInicial.setText("");
-//        }else{
-//            logConexaoInicial.setText("Você não pode acessar essa tela enquanto não conectar no banco!");
-//        }
+        }else{
+            logConexaoInicial.setText("Você não pode acessar essa tela enquanto não conectar no banco!");
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnConectarBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarBancoActionPerformed
@@ -266,21 +266,33 @@ public class interfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConectarBancoActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        // TODO add your handling code here:
+        if(verificaValoresBanco()){
+            InterfaceInsereDados inserir = new InterfaceInsereDados();
+            inserir.setVisible(true);
+            logConexaoInicial.setText("");
+        }else{
+            logConexaoInicial.setText("Você não pode acessar essa tela enquanto não conectar no banco!");
+        }
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        if(verificaValoresBanco()){
+            InterfaceUpdate update = new InterfaceUpdate();
+            update.setVisible(true);
+            logConexaoInicial.setText("");
+        }else{
+            logConexaoInicial.setText("Você não pode acessar essa tela enquanto não conectar no banco!");
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-//        if(verificaValoresBanco()){
+        if(verificaValoresBanco()){
             InterfaceDelete deletar = new InterfaceDelete();
             deletar.setVisible(true);
             logConexaoInicial.setText("");
-//        }else{
-//            logConexaoInicial.setText("Você não pode acessar essa tela enquanto não conectar no banco!");
-//        }
+        }else{
+            logConexaoInicial.setText("Você não pode acessar essa tela enquanto não conectar no banco!");
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private boolean verificaValoresBanco(){

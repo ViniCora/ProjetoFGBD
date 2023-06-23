@@ -483,15 +483,15 @@ public class InterfaceConsulta extends javax.swing.JFrame {
              }
          }
         
-        System.out.println(sbSQL.toString());
-        jLabel9.setText("Sem Erros");
-        
         try {
             sbRetorno = DBUtils.efetivarBuscaConsulta(sbSQL);
+            jLabel9.setText("Sem erros");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InterfaceConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            jLabel9.setText(ex.getMessage());
         } catch (SQLException ex) {
             Logger.getLogger(InterfaceConsulta.class.getName()).log(Level.SEVERE, null, ex);
+            jLabel9.setText(ex.getMessage());
         }
         
         InterfaceConsultaResultados consultaResultado = new InterfaceConsultaResultados();
